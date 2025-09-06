@@ -1,0 +1,173 @@
+$inaltime-meniu: 40px;
+$latime-buton: 150px;
+$tr-dur: 0.5s;
+
+@mixin tranzitie($dur: $tr-dur){
+  transition: all $dur linear;
+}
+
+#hamburger, #ch-menu {
+  display: none;
+}
+nav{
+<<<<<<< HEAD
+=======
+  position: relative;
+>>>>>>> df6433f (Versiunea finală a proiectului)
+  display: block;
+  --inaltime-meniu: #{$inaltime-meniu};
+  --latime-buton:#{$latime-buton};
+  height: var(--inaltime-meniu);
+  background-color: var(--background-nav);
+  border-radius: 10px;
+}
+ul{
+  &.meniu{
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+
+  li{
+    width: var(--latime-buton);
+    height: var(--inaltime-meniu);
+    border: 2px solid var(--culoare-background);
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    line-height: var(--inaltime-meniu);
+    @include tranzitie;
+
+    div.imag-icon{
+      display: none;
+    }
+
+    &:hover{
+      background: var(--background-nav);
+      box-shadow: 4px 4px 10px 0px white;
+
+      ul{
+        display: block;
+        position: relative;
+        left: -2px;
+        li{
+          background-color: var(--verde-inchis);
+        }
+      }
+
+      >a{
+        color: white;
+      }
+    }
+
+    ul{
+      li{
+        &:hover{
+          a{
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+
+  >li{
+    >a{
+      position: relative;
+<<<<<<< HEAD
+=======
+      color: var(--ul-meniu-a);
+>>>>>>> df6433f (Versiunea finală a proiectului)
+
+      &::before{
+        content: ' ';
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(180deg,rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 1) 75%, rgba(10, 10, 10, 1) 90%);
+        @include tranzitie(0.3s);
+      }
+    }
+
+    &:hover{
+      >a{
+        &::before{
+          display: block;
+          opacity: 1;
+          transform: translate(0px, calc(var(--inaltime-meniu) - 9px));
+        }
+      }
+    }
+  }
+
+  ul{
+    display: none;
+    list-style-type: none;
+    padding: 0;
+
+    animation-name: animatie_submeniu;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transform-origin: center;
+    li{
+      background-color: var(--culoare-bordura);
+      height: max-content;
+      line-height: 25px;
+    }
+  }
+
+  a{
+<<<<<<< HEAD
+    color:black;
+=======
+    color: black;
+>>>>>>> df6433f (Versiunea finală a proiectului)
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+    @include tranzitie;
+  }
+  }
+}
+
+@keyframes animatie_submeniu {
+    0%{
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scaleY(100%);
+        z-index: 10;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 801px){
+    nav{
+        --latime-buton: 300px;
+        height: auto;
+    }
+    ul{
+      &.meniu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li{
+          div{
+            &.imag-icon{
+              display: block;
+            }
+
+            &.text-icon{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+}

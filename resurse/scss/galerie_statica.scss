@@ -1,0 +1,105 @@
+body {
+    counter-reset: poze;
+}
+#galerie-statica {
+    background-color: var(--culoare-text);
+    border: 1px solid black;
+    border-radius: 10px;
+    height: max-content;
+    margin-top: 50px;
+    padding-left: var(--spatiere-zone);
+    padding-right: var(--spatiere-zone);
+}
+#grid-galerie {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 30px;
+    margin-bottom: var(--spatiere-zone);
+    // > * {
+    //   outline: 2px solid var(--culoare-bordura);
+    // }
+}
+.poze-galerie {
+    margin: 0;
+    counter-increment: poze;
+    border: 2px solid var(--verde-deschis);
+    picture img {
+        filter: sepia(100%);
+        transition: filter 800ms ease;
+    }
+    figcaption {
+        width: 400px;
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0);
+        padding: 2px 0px 5px 0px;
+        transition:
+            color 800ms ease,
+            text-shadow 800ms ease;
+        &::before {
+            content: counter(poze, lower-roman) " ";
+        }
+    }
+    &:hover {
+        picture img {
+            filter: sepia(0%);
+        }
+        figcaption {
+            color: var(--verde-inchis);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+$nr-poze: 20;
+$index: 1;
+@for $i from 1 through 2*$nr-poze {
+    @if $i % 4 == 1 {
+        @for $j from 1 through 2 {
+            #grid-galerie>figure:nth-child(#{$index}){
+                grid-area: #{$i}/#{$j}/#{$i+1}/#{$j+1};
+            }
+            $index: $index + 1;
+        }
+    }
+    @else if $i % 4 == 2 or $i % 4 == 0 {
+        #grid-galerie>figure:nth-child(#{$index}){
+            grid-area: #{$i}/1/#{$i+1}/2;
+        }
+        $index: $index + 1;
+        #grid-galerie>figure:nth-child(#{$index}){
+            grid-area: #{$i}/3/#{$i+1}/4;
+        }
+        $index: $index + 1;
+    }
+    @else if $i % 4 == 3 {
+        @for $j from 2 through 3 {
+            #grid-galerie>figure:nth-child(#{$index}){
+                grid-area: #{$i}/#{$j}/#{$i+1}/#{$j+1};
+            }
+            $index: $index + 1;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #grid-galerie {
+        grid-template-columns: 1fr 1fr;
+    }
+    .poze-galerie {
+        figcaption {
+            width: 300px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #grid-galerie {
+        grid-template-columns: 1fr;
+    }
+    .poze-galerie {
+        figcaption {
+            width: 150px;
+        }
+    }
+}

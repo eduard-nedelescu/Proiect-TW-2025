@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Biblioteca Voluntarului - Ofertă</title>
+        <meta name="keywords" content="voluntariat, biblioteca, voluntar, oferte voluntariat, adolescenți, tineret, internship, piata, oferte">
+        <meta name="description" content="Oferte de voluntariat și internship-uri pentru tinerii din București">
+        <%- include("../fragmente/head.ejs") %>
+        <link rel="stylesheet" href="/resurse/css/produs.css" type="text/css" />
+    </head>
+    <body>
+        <%- include("../fragmente/header.ejs") %>
+        <main>
+            <section>
+                <h2>Pagina ofertei</h2>
+                <hr>
+                <% let vctZile = ["Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică"];
+                let vctLuni = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"]; %>
+                <article id="art-produs">
+                    <h3><span><%- locals.produs.nume %></span></h3>
+                    <p>Categorie: <span><%- locals.produs.categorie %></span></p>
+                    <p>Subcategorie: <span><%- locals.produs.subcategorie %></span></p>
+                    <p>Descriere: <span><%- locals.produs.descriere %></span></p>
+                    <p>Număr locuri: <span><%- locals.produs.nr_locuri %></span></p>
+                    <p>Număr ore: <span><%- locals.produs.total_ore %></span></p>
+                    <p>Număr ore per zi: <span><%- locals.produs.ore_pe_zi %></span></p>
+                    <p>Locație: <span><%- locals.produs.localitate %></span></p>
+                    <p>Abilități: <span><%- String(produs.abilitati).split(",").join(", ") %></span></p>
+                    <p>Dată început: <span><time datetime="<%- produs.data_inceput %>"><%- vctZile[produs.data_inceput.getDay()] %>, <%- produs.data_inceput.getDate() %>-<%- vctLuni[produs.data_inceput.getMonth()] %>-<%- produs.data_inceput.getFullYear() %></time></span></p>
+                    <p>Dată sfârșit: <span><time datetime="<%- produs.data_sfarsit %>"><%- vctZile[produs.data_sfarsit.getDay()] %>, <%- produs.data_sfarsit.getDate() %>-<%- vctLuni[produs.data_sfarsit.getMonth()] %>-<%- produs.data_sfarsit.getFullYear() %></time></span></p>
+                    <p>Acceptă înscrieri: <span><%= produs.accepta_voluntari ? "DA" : "NU"; %></span></p>
+                    <figure class="imag-produs">
+                        <img src="/resurse/img/produse/<%- locals.produs.imagine %>" alt="<%- produs.nume %>" />
+                    </figure>
+                </article>
+            </section>
+            <hr>
+            <section class="sugestii-produse">
+                <h2>Produse similare</h2>
+                <div class="grid-sugestii">
+                    <% locals.sugestii.forEach(function(prod) { %>
+                        <div class="card-sugestie">
+                            <figure>
+                                <img src="/resurse/img/produse/<%- prod.imagine %>" alt="<%- prod.nume %>">
+                            </figure>
+                            <h3><a href="/produs/<%- prod.id %>/<%- prod.categorie %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
+                            <p><strong>Locuri:</strong> <%- prod.nr_locuri %></p>
+                            <p><strong>Ore:</strong> <%- prod.total_ore %></p>
+                        </div>
+                        <% }) %>
+                </div>
+            </section>
+        </main>
+        <%- include("../fragmente/footer.ejs") %>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+{
+    "cale_galerie": "resurse/img/galerie",
+    "imagini": [
+        {
+            "fisier_imagine": "cantina.jpg",
+            "nume_poza": "Cantină comunitară",
+            "continut_alternativ": "Tineri servind mâncare",
+            "descriere_poza": "Tinerii servesc produse alimentare oamenilor nevoiași",
+            "intervale_zile": [["luni", "vineri"]],
+            "licenta": "CC0",
+            "sursa": "https://pixabay.com/photos/sunset-nature-sky-12345/",
+            "autor": null
+        },
+        {
+            "fisier_imagine": "crucea rosie.jpg",
+            "nume_poza": "Voluntariat Vrancea CR",
+            "continut_alternativ": "Tineri voluntari la CR",
+            "descriere_poza": "Adolescenți voluntari împreună cu sediul Crucii Roșii din Vrancea",
+            "intervale_zile": [["luni", "sambata"], ["duminica", "duminica"]],
+            "licenta": "CC-BY",
+            "sursa": "https://www.flickr.com/photos/autorul-foto/12345678/",
+            "autor": "John Doe"
+        },
+        {
+            "fisier_imagine": "ecologie adolescenti.jpg",
+            "nume_poza": "Amenajarea spațiului verde",
+            "continut_alternativ": "Tineri amenajând spațiul verde",
+            "descriere_poza": "Tinerii îngrijesc gazonul și vegetația dintr-un parc",
+            "intervale_zile": [["luni", "miercuri"], ["sambata", "sambata"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "ecologie adulti.jpg",
+            "nume_poza": "Amenajarea spațiului verde",
+            "continut_alternativ": "Adulți amenajând spațiul verde",
+            "descriere_poza": "Adulții îngrijesc gazonul și vegetația dintr-un parc",
+            "intervale_zile": [["marti", "joi"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "ecologie copii.jpg",
+            "nume_poza": "Amenajarea spațiului verde",
+            "continut_alternativ": "Copii amenajând spațiul verde",
+            "descriere_poza": "Copiii îngrijesc gazonul și vegetația dintr-un parc",
+            "intervale_zile": [["miercuri", "vineri"]]
+        },
+        {
+            "fisier_imagine": "ecologizare.jpg",
+            "nume_poza": "Amenajarea spațiului verde",
+            "continut_alternativ": "Tinerii îngrijind spațiul public",
+            "descriere_poza": "Tinerii colectează deșeurile de pe spațiul verde",
+            "intervale_zile": [["luni", "miercuri"], ["vineri", "vineri"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "grup.jpg",
+            "nume_poza": "Poză de grup",
+            "continut_alternativ": "Echipa unui proiect de voluntariat",
+            "descriere_poza": "Participanții proiectului de voluntariat la finalul proiectului",
+            "intervale_zile": [["joi", "sambata"], ["luni", "marti"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "maini.jpg",
+            "nume_poza": "Inspirațional",
+            "continut_alternativ": "Mai multe mâini în așezare radială emergentă",
+            "descriere_poza": "Tinerii susțin munca în echipă pentru un viitor mai verde",
+            "intervale_zile": [["marti", "joi"], ["sambata", "sambata"]]
+        },
+        {
+            "fisier_imagine": "medicina fara frontiere.jpg",
+            "nume_poza": "Misiune umanitară în Africa",
+            "continut_alternativ": "Medici consultând copii africani",
+            "descriere_poza": "Misiune umanitară de asigurare a sănătății populației într-un sat din Africa",
+            "intervale_zile": [["miercuri", "sambata"]]
+        },
+        {
+            "fisier_imagine": "poster animat.jpg",
+            "nume_poza": "Inspirațional",
+            "continut_alternativ": "Desen grafic cu voluntari",
+            "descriere_poza": "Împreună suntem mai puternici!",
+            "intervale_zile": [["luni", "joi"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "poster maini.jpg",
+            "nume_poza": "Inspirațional",
+            "continut_alternativ": "Două palme pictate cu harta geografică a lumii",
+            "descriere_poza": "Soarta planetei este în mâinile noastre!",
+            "intervale_zile": [["luni", "vineri"], ["sambata", "sambata"]]
+        },
+        {
+            "fisier_imagine": "poster.jpg",
+            "nume_poza": "Inspirațional",
+            "continut_alternativ": "Desen grafic cu mai multe palme de copii",
+            "descriere_poza": "Viitorul este colorat de copiii noștri!",
+            "intervale_zile": [["joi", "sambata"]]
+        },
+        {
+            "fisier_imagine": "salubrizare.jpg",
+            "nume_poza": "Amenajarea spațiului verde",
+            "continut_alternativ": "Tinerii îngrijind spațiul public",
+            "descriere_poza": "Mai mulți tineri curăță campusul universitar",
+            "intervale_zile": [["joi", "sambata"], ["duminica", "duminica"]]
+        },
+        {
+            "fisier_imagine": "sanatate.jpg",
+            "nume_poza": "Medici fără frontiere",
+            "continut_alternativ": "O echipă de medici și asistente",
+            "descriere_poza": "Mâinile noastre te țin mereu de mână!",
+            "intervale_zile": [["duminica", "joi"]]
+        },
+        {
+            "fisier_imagine": "siguranta alimentara.jpg",
+            "nume_poza": "Cantină comunitară",
+            "continut_alternativ": "Copii servind mâncare",
+            "descriere_poza": "Tinerii servesc produse alimentare oamenilor nevoiași",
+            "intervale_zile": [["luni", "vineri"]]
+        },
+        {
+            "fisier_imagine": "strangere fonduri.jpg",
+            "nume_poza": "Strângere de fonduri",
+            "continut_alternativ": "Copii care țin cutii",
+            "descriere_poza": "Tinerii promovează o campanie de donații pentru nevoiași",
+            "intervale_zile": [["marti", "vineri"]]
+        },
+        {
+            "fisier_imagine": "student.jpg",
+            "nume_poza": "Voluntariat în universitate",
+            "continut_alternativ": "Student purtând un tricou de voluntar",
+            "descriere_poza": "Un student voluntar al Universității din Ottawa",
+            "intervale_zile": [["luni", "miercuri"], ["vineri", "sambata"]]
+        },
+        {
+            "fisier_imagine": "tineri.jpg",
+            "nume_poza": "Poză de grup",
+            "continut_alternativ": "Trei tineri voluntari",
+            "descriere_poza": "Mai mulți voluntari imortalizați în timpul unui proiect",
+            "intervale_zile": [["marti", "joi"], ["sambata", "sambata"]]
+        },
+        {
+            "fisier_imagine": "voluntariat pompieri.jpg",
+            "nume_poza": "Voluntariat ISU",
+            "continut_alternativ": "Un grup de pompieri la stație",
+            "descriere_poza": "Alătură-te detașamentului de pompieri pentru o lume mai sigură!",
+            "intervale_zile": [["vineri", "sambata"], ["duminica", "luni"]]
+        },
+        {
+            "fisier_imagine": "voluntariat smurd.jpg",
+            "nume_poza": "Voluntariat ISU",
+            "continut_alternativ": "O tânără voluntară cu ambulanța",
+            "descriere_poza": "Voluntară încă de la 17 ani pe ambulanță",
+            "intervale_zile": [["vineri", "sambata"], ["duminica", "marti"]]
+        }
+    ]
+}

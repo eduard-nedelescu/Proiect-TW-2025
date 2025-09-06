@@ -1,0 +1,143 @@
+@charset "UTF-8";
+body {
+  --grosime-bar: 5px;
+  --culoare-bar: white;
+}
+
+ul.meniu {
+  display: block; /* afișăm mereu, dar mascăm cu clip-path */
+  margin: 0;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background-color: var(--culoare-bordura);
+  clip-path: circle(0% at 0% 0%);
+  transition: clip-path 1s ease-in-out;
+}
+
+ul.meniu li {
+  margin: 0;
+  width: 100%;
+}
+
+#ch-menu:checked ~ ul.meniu {
+  clip-path: circle(150% at 0% 0%);
+}
+
+ul.meniu ul {
+  animation: none;
+  z-index: 10;
+}
+
+ul.meniu li:hover ul {
+  left: 0;
+}
+
+ul.meniu > li > a::before {
+  content: none;
+}
+
+#hamburger {
+  display: block;
+  position: relative;
+  height: var(--inaltime-meniu);
+  width: var(--inaltime-meniu);
+  left: 5px;
+}
+
+#hamburger > .hamburger {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--grosime-bar);
+  background: var(--culoare-bar);
+  border-radius: calc(var(--grosime-bar) / 2);
+  transition: all 0.3s ease-in-out;
+  animation: aparitieBare 2s linear;
+}
+
+.hamburger .bar:nth-child(1) {
+  animation-delay: 0.6666666667s;
+}
+
+.hamburger .bar:nth-child(2) {
+  animation-delay: 1.3333333333s;
+}
+
+.hamburger .bar:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes aparitieBare {
+  0% {
+    background-color: transparent;
+    transform-origin: center;
+    transform: scaleX(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    background-color: var(--culoare-text);
+    transform-origin: center;
+    transform: scaleX(1.2) rotate(20deg);
+    opacity: 0.5;
+  }
+  75% {
+    background-color: var(--culoare-text);
+    transform-origin: center;
+    transform: scaleX(0.8) rotate(-20deg);
+    opacity: 0.5;
+  }
+  100% {
+    background-color: white;
+    transform-origin: center;
+    transform: scaleX(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+.bar1 {
+  top: 15%;
+}
+
+.bar2 {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.bar3 {
+  bottom: 15%;
+}
+
+#ch-menu:checked + #hamburger .bar1 {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#ch-menu:checked + #hamburger .bar2 {
+  opacity: 0;
+}
+
+#ch-menu:checked + #hamburger .bar3 {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+#hamburger:hover .bar {
+  height: calc(var(--grosime-bar) + 2px);
+  box-shadow: 0px 0px 3px black;
+}
+
+#imag-acasa {
+  display: block;
+}
+
+#text-acasa {
+  display: none;
+}

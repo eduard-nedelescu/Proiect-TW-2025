@@ -1,0 +1,50 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with 
+(
+    $theme-colors: (
+        "primary":    #34495E,
+        "secondary":  #2980B9,
+        "light":      #ECF0F1,
+<<<<<<< HEAD
+        "dark":       #2C3E50
+    ),
+    $btn-color: pink,
+    $grid-breakpoints: (
+        md: 800px,
+        lg: 1200px
+    ),
+    $border-radius: 20%,
+=======
+        "dark":       #182450
+    ),
+    $grid-breakpoints: (
+        xs: 0,
+        sm: 800px,
+        md: 1200px,
+        lg: 1500px,
+        xl: 1700px
+    ),
+    $btn-color: pink,
+    $border-radius: 20px,
+>>>>>>> df6433f (Versiunea finală a proiectului)
+    $h1-font-size: 2rem,
+    $h2-font-size: 1.6rem,
+    $font-family-sans-serif: "Times New Roman",
+
+    $body-color: black,
+    $line-height-base: 1.1,
+<<<<<<< HEAD
+    $headings-font-weight: 800
+)
+=======
+    $headings-font-weight: 800,
+
+    $border-width: 3px,
+
+    $form-range-thumb-width: calc(1.5 * 1rem),
+    $form-range-thumb-height: calc(1.5 * 1rem),
+    $form-range-thumb-bg: #ff5722,
+    $form-range-thumb-border: 0,
+    $form-range-track-bg: #0d6efd,
+    $form-range-track-height: .5rem
+)
+>>>>>>> df6433f (Versiunea finală a proiectului)

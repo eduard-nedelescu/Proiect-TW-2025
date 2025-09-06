@@ -1,0 +1,25 @@
+<section id="galerie-statica">
+    <h2>Galerie statică</h2>
+    <div id="grid-galerie">
+        <%  d=new Date(); 
+            vect_zile=["duminica", "luni" , "marti" , "miercuri" , "joi" , "vineri" , "sambata" ];
+            imaginiDeAfisat=[]; 
+            for (let imagine of locals.imagini) 
+                for (let interval of imagine.intervale_zile)
+                    if (interval && (d.getDay()>=vect_zile.indexOf(interval[0]) && d.getDay()<=vect_zile.indexOf(interval[1]))) 
+                        imaginiDeAfisat.push(imagine);
+            if (imaginiDeAfisat.length % 2) 
+                imaginiDeAfisat.pop();
+            for (let imagine of imaginiDeAfisat) { %>
+                <figure class="poze-galerie">
+                    <picture>
+                        <source srcset="<%- imagine.fisier_mic %>" media="screen and (max-width: 800px)" />
+                        <source srcset="<%- imagine.fisier_mediu %>" media="screen and (max-width: 1200px)" />
+                        <img src="<%- imagine.fisier_imagine %>" name="<%- imagine.nume_poza %>"
+                            alt="<%- imagine.continut_alternativ %>" />
+                    </picture>
+                    <figcaption><%- imagine.descriere_poza %></figcaption>
+                </figure>
+            <% } %> 
+    </div>
+</section>

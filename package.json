@@ -1,0 +1,29 @@
+{
+  "name": "etapa-4",
+  "version": "1.0.0",
+  "description": "Proiect TW 2025",
+  "keywords": [
+    "bibliotecă",
+    "voluntariat",
+    "piață",
+    "ONG"
+  ],
+  "license": "ISC",
+  "author": "George-Eduard NEDELESCU",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+<<<<<<< HEAD
+=======
+    "pg": "^8.16.3",
+>>>>>>> df6433f (Versiunea finală a proiectului)
+    "sass": "^1.90.0",
+    "sharp": "^0.34.3"
+  }
+}

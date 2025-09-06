@@ -1,0 +1,256 @@
+#continut {
+  background-color: rgba(214, 234, 248, 0.7);
+  border-radius: 10px;
+  padding: 1px 10px 10px 10px;
+}
+
+@media (max-width: 1200px) {
+  .galerie-wrapper {
+    display: none;
+  }
+}
+
+.galerie {
+  width: 400px;
+  aspect-ratio: 1/1;
+  margin: 2rem auto;
+  position: relative;
+  overflow: hidden;
+  border: 15px solid transparent;
+  border-image-source: url("../img/galerie/ecologie adulti.jpg");
+  border-image-slice: 10;
+  border-image-repeat: round;
+}
+.galerie:hover .grid {
+  animation-play-state: paused;
+}
+
+.grid {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  animation: slideshow 8s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.galerie-2 .grid {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.cell {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.cell > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cell > figcaption {
+  font-size: 5pt;
+  color: white;
+  background-color: var(--background-nav);
+  text-align: center;
+}
+
+@keyframes slideshow {
+  0% {
+    transform-origin: 0% 0%;
+    transform: scale(2);
+  }
+  14.2857142857% {
+    transform: scale(1);
+  }
+  28.5714285714% {
+    transform-origin: 100% 100%;
+    transform: scale(2);
+  }
+  42.8571428571% {
+    transform: scale(1);
+  }
+  57.1428571429% {
+    transform-origin: 100% 0%;
+    transform: scale(2);
+  }
+  71.4285714286% {
+    transform: scale(1);
+  }
+  85.7142857143% {
+    transform-origin: 0% 100%;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+body {
+  background: transparent !important;
+}
+
+.bckg {
+  position: fixed;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  min-width: none;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+:root {
+  --viteza: 10s;
+  --spatiu: 2rem;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: var(--verde-inchis);
+  border-radius: 10px;
+  margin-bottom: 2vw;
+  padding: 0.6rem 0rem 0.6rem 0rem;
+  mask: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.marquee .marquee__track {
+  display: flex;
+  gap: var(--spatiu);
+  width: max-content;
+  animation: rulareX var(--viteza) linear infinite;
+}
+.marquee .marquee__track .marquee__group {
+  display: inline-flex;
+  gap: var(--spatiu);
+  align-items: center;
+}
+.marquee .marquee__track .marquee__group .icon {
+  font: 600 1rem system-ui, sans-serif;
+  white-space: nowrap;
+  padding: 0.4rem 0.8rem;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 5px 5px 3px 1px rgba(128, 128, 128, 0.3411764706);
+}
+
+@keyframes rulareX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.5%);
+  }
+}
+table {
+  width: 100%;
+  border: 3px solid black !important;
+}
+
+thead, tbody, tfoot, tr, td, th {
+  border-width: 1px !important;
+}
+
+thead {
+  background: var(--verde-deschis);
+  text-align: center;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 801px) {
+  body {
+    --culoare-text: black !important;
+  }
+  table {
+    border: 2px solid var(--culoare-background) !important;
+    padding: 1rem 1rem 0rem 1rem;
+  }
+  tbody {
+    border: 0 !important;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background: var(--verde-deschis);
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid black !important;
+    position: relative;
+    padding-left: 45%;
+  }
+  td::before {
+    position: absolute;
+    top: 50%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    background-color: rgb(191, 191, 191);
+    white-space: nowrap;
+    font-weight: 600;
+    color: #333;
+    content: attr(data-label) ":";
+  }
+}
+@media screen and (max-width: 800px) {
+  table {
+    border: 0 !important;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  thead, tbody, tr {
+    float: left;
+  }
+  thead {
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+  thead tr {
+    border-right: none !important;
+  }
+  thead tr th {
+    border-right: none;
+  }
+  th, td {
+    display: block;
+    border: 1px solid black;
+    padding: 0.4rem;
+    border-left: none !important;
+  }
+  tbody {
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+  tbody tr:first-child {
+    border-left: none !important;
+  }
+  tbody tr:nth-child(2n) td:first-child {
+    border-top: 2px solid black;
+  }
+  tbody tr {
+    border-right: none !important;
+  }
+  td::before {
+    display: none;
+  }
+}

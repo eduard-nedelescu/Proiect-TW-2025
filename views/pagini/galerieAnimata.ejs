@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Biblioteca Voluntarului - Acasă</title>
+        <meta name="keywords" content="voluntariat, biblioteca, voluntar, oferte voluntariat, adolescenți, tineret, internship, piata, oferte">
+        <meta name="description" content="Oferte de voluntariat și internship-uri pentru tinerii din București">
+        <link rel="stylesheet" href="/resurse/css/galerie_animata.css" type="text/css" />
+        <%- include("../fragmente/head.ejs") %>
+    </head>
+    <body>
+        <%- include("../fragmente/header.ejs") %>
+        <video class="bckg" poster="/resurse/img/voluntariat-large.jpg" muted autoplay loop>
+            <source src="/resurse/img/Video voluntariat.mp4" type="video/mp4"/>
+            <source src="/resurse/img/Video voluntariat.webm" type="video/webm"/>
+            <source src="/resurse/img/Video voluntariat.mov" type="video/mov"/>
+        </video>
+        <main>
+            <div class="marquee">
+                <div class="marquee__track">
+                    <div class="marquee__group">
+                        <span class="icon">Salut! 👋</span>
+                        <span class="icon">Animație CSS fără JS</span>
+                        <span class="icon">Buclă lină, fără sacadări</span>
+                        <span class="icon">Responsive</span>
+                        <span class="icon">Fără scrollbar</span>
+                    </div>
+                    <div class="marquee__group" aria-hidden="true">
+                        <span class="icon">Salut! 👋</span>
+                        <span class="icon">Animație CSS fără JS</span>
+                        <span class="icon">Buclă lină, fără sacadări</span>
+                        <span class="icon">Responsive</span>
+                        <span class="icon">Fără scrollbar</span>
+                    </div>
+                    <div class="marquee__group" aria-hidden="true">
+                        <span class="icon">Salut! 👋</span>
+                        <span class="icon">Animație CSS fără JS</span>
+                        <span class="icon">Buclă lină, fără sacadări</span>
+                        <span class="icon">Responsive</span>
+                        <span class="icon">Fără scrollbar</span>
+                    </div>
+                </div>
+            </div>
+            <section id="continut">
+                <section class="galerie-wrapper">
+                    <h2>Galerie animată</h2>
+                    <div class="galerie galerie-<%= Math.sqrt(locals.vctImagini.length) %>">
+                        <div class="grid">
+                            <% vctImagini.forEach(function(img){ %>
+                                <figure class="cell">
+                                    <img src="<%= img.fisier_imagine %>" alt="<%= img.continut_alternativ %>">
+                                    <figcaption><%- img.descriere_poza %></figcaption>
+                                </figure>
+                                <% }); %>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Proiecte ONG & Voluntari</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nume proiect</th>
+                                <th>ONG implicat</th>
+                                <th>Număr voluntari</th>
+                                <th>Rezultat principal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Nume proiect">Curățenie în parcuri</td>
+                                <td data-label="ONG implicat">Asociația Verde Urban</td>
+                                <td data-label="Număr voluntari">45</td>
+                                <td data-label="Rezultat principal">Colectarea a 300 kg deșeuri</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Nume proiect">Sprijin pentru copii</td>
+                                <td data-label="ONG implicat">Fundatia Educația</td>
+                                <td data-label="Număr voluntari">60</td>
+                                <td data-label="Rezultat principal">Ateliere pentru 120 elevi</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Nume proiect">Plantare de arbori</td>
+                                <td data-label="ONG implicat">EcoVia</td>
+                                <td data-label="Număr voluntari">80</td>
+                                <td data-label="Rezultat principal">1000 puieți plantați</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Nume proiect">Campanie sănătate</td>
+                                <td data-label="ONG implicat">Salus Comunitar</td>
+                                <td data-label="Număr voluntari">35</td>
+                                <td data-label="Rezultat principal">150 persoane informate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </main>
+        <%- include("../fragmente/footer.ejs") %>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<<<<<<< HEAD
+<header>
+    <h1 style="color: rgb(40, 160, 160)" class="playwrite-vn-guides-regular">Biblioteca Voluntarului – piața de oferte
+=======
+<script src="/resurse/js/tema.js"></script>
+<header>
+    <h1 class="playwrite-vn-guides-regular">Biblioteca Voluntarului – piața de oferte
+>>>>>>> df6433f (Versiunea finală a proiectului)
+        pentru toți adolescenții bucureșteni</h1>
+</header>
+<nav>
+    <input id="ch-menu" type="checkbox" hidden>
+    <label id="hamburger" for="ch-menu">
+        <div class="hamburger">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+        </div>
+    </label>
+    <ul class="meniu">
+        <li><a href="/">
+                <div class="text-icon" id="text-acasa">Acasa</div>
+                <div class="imag-icon" id="imag-acasa"><span class="fa-solid fa-house"></span></div>
+            </a>
+            <ul>
+                <li><a href="/index#sectiune1">Ce este Bibilioteca Voluntarului?</a></li>
+                <li><a href="/index#sectiune2">Ce vei găsi în biblioteca noastră?</a></li>
+                <li><a href="/index#sectiune3"><i class="fa-solid fa-folder-open"></i> Documente utile</a></li>
+                <li><a href="/index#sectiune4">Linkuri utile</a></li>
+            </ul>
+        </li>
+        <li><a href="">
+                <div class="text-icon">Înregistrare</div>
+                <div class="imag-icon"><span class="fa-solid fa-user-plus"></span></div>
+            </a></li>
+        <li><a href="/despre">
+                <div class="text-icon">Despre noi</div>
+                <div class="imag-icon"><span class="fa-solid fa-circle-info"></span></div>
+            </a>
+            <ul>
+                <li><a href="">Prezentare</a></li>
+                <li><a href="">Echipa</a></li>
+                <li><a href="">Scop</a></li>
+            </ul>
+        </li>
+        <li><a href="/galerieStatica">
+                <div class="text-icon">Partenerii noștri</div>
+                <div class="imag-icon"><span class="fa-solid fa-handshake"></span></div>
+            </a>
+            <ul>
+                <li><a href="/galerieStatica">Companii și ONG-uri</a></li>
+                <li><a href="/galerieAnimata">Proiecte desfășurate</a></li>
+<<<<<<< HEAD
+                <li><a href="">Proiecte propuse</a></li>
+=======
+                <li><a href="/produse">Proiecte propuse</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/produse">
+                <div class="text-icon">Oferte</div>
+                <div class="imag-icon"><span class="fa-solid fa-handshake"></span></div>
+            </a>
+            <ul>
+                <li><a href="/produse">Toate</a></li>
+                <% for(let opt of locals.optiuniMeniu) {%>
+                    <li><a href="/produse?categorie=<%- opt.unnest %>"><%- `${opt.unnest.charAt(0).toUpperCase()}${opt.unnest.slice(1)}` %></a></li>
+                <% } %>
+>>>>>>> df6433f (Versiunea finală a proiectului)
+            </ul>
+        </li>
+        <li><a href="">
+                <div class="text-icon">Contact</div>
+                <div class="imag-icon"><span class="fa-solid fa-address-card"></span></div>
+            </a></li>
+    </ul>
+<<<<<<< HEAD
+</nav>
+=======
+</nav>
+
+<div class="tema-selector">
+    <input type="radio" name="tema" id="tema-standard" value="" checked>
+    <label for="tema-standard" class="btn-standard">Standard</label>
+
+    <input type="radio" name="tema" id="tema-light" value="light">
+    <label for="tema-light" class="btn-light">Light</label>
+
+    <input type="radio" name="tema" id="tema-contrast" value="contrast">
+    <label for="tema-contrast" class="btn-contrast">Contrast</label>
+
+    <input type="radio" name="tema" id="tema-dark" value="dark">
+    <label for="tema-dark" class="btn-dark">Dark</label>
+</div>
+>>>>>>> df6433f (Versiunea finală a proiectului)

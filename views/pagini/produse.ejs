@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Biblioteca Voluntarului - Oferte</title>
+        <meta name="keywords" content="voluntariat, biblioteca, voluntar, oferte voluntariat, adolescenți, tineret, internship, piata, oferte">
+        <meta name="description" content="Oferte de voluntariat și internship-uri pentru tinerii din București">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <%- include("../fragmente/head.ejs") %>
+        <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src=/resurse/js/produse.js></script>
+    </head>
+    <body>
+        <%- include("../fragmente/header.ejs") %>
+        <main>
+            <div class="filtre">
+                <div class="row">
+                    <div class="mb-3 col-lg">
+                        <label for="inp-nume" class="form-label d-none d-sm-block">Căutare după nume:</label>
+                        <div class="input-group input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" id="inp-nume" class="form-control" placeholder="Caută...">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-lg">
+                        <label for="inp-nr-ore" class="form-label d-none d-sm-block">Număr maxim ore:</label>
+                        <div class="d-flex align-items-center">
+                            <span class="me-2" style="line-height: 1;"> <%- locals.minOre %> </span>
+                            <input type="range" class="form-range flex-grow-1 mx-2" id="inp-nr-ore" value="<%- locals.maxOre %>"
+                                min="<%- locals.minOre %>" max="<%- locals.maxOre %>" style="max-width: 300px;">
+                            <span class="ms-2" style="line-height: 1;"> <%- locals.maxOre %> </span>
+                            <span id="info-nr-ore" class="ms-2 text-muted" style="line-height: 1;"> (<%- locals.maxOre %>) </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-lg">
+                        <label for="inp-localitate" class="form-label d-none d-sm-block">Localitate:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                            <input list="id_lista" id="inp-localitate" class="form-control" placeholder="Selectează localitatea">
+                            <datalist id="id_lista">
+                                <% for (let oras of locals.localitati) { %>
+                                    
+                                    <option value="<%- oras %>"><%- oras %></option>
+                                    <% } %>
+                            </datalist>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-lg">
+                        <label class="form-label d-block d-none d-sm-block">Subcategorie:</label>
+                        <div class="optiuni row row-cols-2 align-items-center">
+                            <div class="form-check col">
+                                <input class="form-check-input" type="radio" name="subcateg_rad" id="inp-subcateg_rad1" value="toate" checked>
+                                <label class="form-check-label" for="inp-subcateg_rad1">
+                                    <i class="bi bi-list"></i> Toate
+                                </label>
+                            </div>
+                            <% let i = 0;
+                            for (let subCateg of locals.vctSubcateg) { 
+                                subCateg = subCateg.split("_").join(" ");
+                            %>
+                            <div class="form-check col">
+                                <input class="form-check-input" type="radio" name="subcateg_rad" id="inp-subcateg_rad<%- i+2 %>" value="<%- subCateg %>">
+                                <label class="form-check-label" for="inp-subcateg_rad<%- i+2 %>">
+                                    <i class="bi bi-tag-fill"></i> <%- `${subCateg.charAt(0).toUpperCase()}${subCateg.slice(1)}` %>
+                                </label>
+                            </div>
+                            <% i++; } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-lg-8">
+                        <label for="inp-descriere" class="form-label d-none d-sm-block">Căutare descriere:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-text-paragraph"></i>
+                            </span>
+                            <div class="form-floating flex-grow-1">
+                                <textarea id="inp-descriere" class="form-control" rows="3"></textarea>
+                                <label for="inp-descriere">Scrie cu + înainte cuvinte cheie care să apară în descriere și cu - înainte cuvinte cheie care să nu apară în descriere</label>
+                            </div>
+                        </div>
+                        <div id="descriereFeedback" class="invalid-feedback">
+                            <b>Secvențele cheie (cele care încep cu +/-) nu trebuie să conțină spații albe!</b>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-lg-2">
+                        <label for="inp-status" class="form-label d-none d-sm-block">Acceptă înscrieri:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-door-open"></i></span>
+                            <select id="inp-status" class="form-select">
+                                <% if (locals.status.length > 1) { %>
+                                    <option value="toate">Indiferent</option>
+                                <% } %>
+                                <% for (let boolean of locals.status) { %>
+                                    <option value="<%- boolean.toUpperCase() %>"><%- boolean %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-lg-2">
+                        <label for="inp_multiplu-nr-locuri" class="form-label d-none d-sm-block">Număr de locuri:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-people-fill"></i></span>
+                            <% let locuriMin = locals.minLocuri;
+                               let locuriMax = locals.maxLocuri;
+                                for (d=parseInt(Math.sqrt(locuriMax - locuriMin)); d> 1; d--) {
+                                    if ((locuriMax - locuriMin) % d == 0) break;
+                                }
+                                um = (locuriMax - locuriMin) / d;
+                                %>
+                                <select id="inp_multiplu-nr-locuri" class="form-select" multiple size="2">
+                                    <% for (let i=1; i <=d; i++) { %>
+                                        <option value="<%- `${locuriMin + (i-1)*um}:${locuriMin + i*um}` %>">
+                                            <%- locuriMin + (i-1)*um %> - <%- locuriMin + i*um %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="toggle-buttons" class="mb-3">
+                    <label class="form-label d-block d-none d-sm-block">Categorie:</label>
+
+                    <div class="btn-group d-flex flex-wrap gap-2" role="group" aria-label="Categorii">
+                        <% for (let i=0; i < locals.categorii.length; i++) { 
+                            let Categ=locals.categorii[i].unnest; 
+                        %>
+                            <input type="checkbox" class="btn-check" name="categ_chck" id="inp-categ_chk<%- i+1 %>" value="<%- Categ %>">
+                            <label class="btn btn-outline-primary" for="inp-categ_chk<%- i+1 %>">
+                                <i class="bi bi-bookmark-plus-fill"></i>
+                                <%- `${Categ.charAt(0).toUpperCase()}${Categ.slice(1)}` %>
+                            </label>
+                            <% } %>
+                    </div>
+                </div>   
+                <script>
+                    const display = window.location.search ? "none" : "block";
+                    document.getElementById("toggle-buttons").style.display = display;
+                </script>         
+
+                <div class="butoane row">
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="filtrare" class="btn btn-primary btn-lg"><i class="bi bi-funnel"></i> <span class="d-none d-sm-block"> Filtrează</span></button></p></div>
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="resetare" class="btn btn-primary btn-lg"><i class="bi bi-arrow-counterclockwise"></i><span class="d-none d-sm-block"> Resetează</span></button></p></div>
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="asc-nr-locuri-localitate" class="btn btn-secondary btn-sm"><i class="bi bi-sort-alpha-down"></i><span class="d-none d-sm-block"> Sortează crescător după locuri și localitate</span></button></p></div>
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="dsc-nr-locuri-localitate" class="btn btn-secondary btn-sm"><i class="bi bi-sort-alpha-down-alt"></i><span class="d-none d-sm-block"> Sortează descrescător după locuri și localitate</span></button></p></div>
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="calculare" class="btn btn-dark"><i class="bi bi-calculator"></i><span class="d-none d-sm-block"> Calculează locuri</span></button></p></div>
+                    <div class="col-lg d-flex justify-content-center align-items-center"><p><button id="selectare" value="1" class="btn btn-dark"><i class="bi bi-check-square-fill"></i><span class="d-none d-sm-block"> Selectează toate</span></button></p></div>
+                </div>
+                <style>
+                    .container {
+                        padding-top: 1rem !important;
+                        padding-bottom: 1rem !important;
+                    }
+                    .card {
+                        border-radius: 1rem;
+                    }
+                    .form-section {
+                        margin-bottom: 1.5rem;
+                    }
+                </style>
+                <!--
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="card shadow p-4">
+                                <h3 class="text-center mb-4">Setare criterii de sortare</h3>
+                                <div class="form-section">
+                                    <label for="sortKey1" class="form-label fw-bold">Prima cheie de sortare</label>
+                                    <select id="sortKey1" class="form-select">
+                                        <option value="locuri">Număr locuri</option>
+                                        <option value="ore">Număr ore</option>
+                                        <option value="dataStart">Data început</option>
+                                        <option value="dataSfarsit">Data sfârșit</option>
+                                    </select>
+                
+                                    <div class="mt-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="order1" id="order1Asc" value="asc"
+                                                checked>
+                                            <label class="form-check-label" for="order1Asc">Crescător</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="order1" id="order1Desc" value="desc">
+                                            <label class="form-check-label" for="order1Desc">Descrescător</label>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="form-section">
+                                    <label for="sortKey2" class="form-label fw-bold">A doua cheie de sortare</label>
+                                    <select id="sortKey2" class="form-select">
+                                        <option value="locuri">Număr locuri</option>
+                                        <option value="ore">Număr ore</option>
+                                        <option value="dataStart">Data început</option>
+                                        <option value="dataSfarsit">Data sfârșit</option>
+                                    </select>
+                
+                                    <div class="mt-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="order2" id="order2Asc" value="asc"
+                                                checked>
+                                            <label class="form-check-label" for="order2Asc">Crescător</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="order2" id="order2Desc" value="desc">
+                                            <label class="form-check-label" for="order2Desc">Descrescător</label>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="text-center">
+                                    <button id="applySort" class="btn btn-primary px-4">Aplică sortarea</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <p>Au fost găsite <b><span class="rezultat"><%- locals.produse.length %></span></b> oferte!</p>
+            </div>
+            <hr>
+            <section id="produse">
+                <h2>Oferte de voluntariat</h2>
+                <div class="grid-produse">
+                    <% let vctZile = ["Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică"];
+                       let vctLuni = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                       for (let produs of locals.produse) { %>
+                        <article class="produs <%- produs.categorie %>" id="articol_<%- produs.id %>"
+                            data-nume="<%- produs.nume %>"
+                            data-categorie="<%- produs.categorie %>"
+                            data-subcategorie="<%- produs.subcategorie.split("_").join(" ") %>"
+                            data-descriere="<%- produs.descriere %>"
+                            data-nr_locuri="<%- produs.nr_locuri %>"
+                            data-total_ore="<%- produs.total_ore %>"
+                            data-ore_pe_zi="<%- produs.ore_pe_zi %>"
+                            data-localitate="<%- produs.localitate %>"
+                            data-abilitati="<%- String(produs.abilitati).split(",").join(", ") %>"
+                            data-data_inceput="<%- produs.data_inceput.toISOString() %>"
+                            data-data_sfarsit="<%- produs.data_sfarsit.toISOString() %>"
+                            data-accepta="<%= produs.accepta_voluntari ? "DA" : "NU" %>"
+                            data-imagine="/resurse/img/produse/<%- produs.imagine %>">
+                            <h3><a href="/produs/<%- produs.id %>/<%- produs.categorie %>"><span class="val-nume"><%- produs.nume %></span></a></h3>
+                            <div class="clasificare">
+                                <p class="categorie">Categorie: <span class="val-categorie"><%- produs.categorie %></span></p>
+                                <p class="categorie">Subcategorie: <span class="val-subcategorie"><%- produs.subcategorie.split("_").join(" ") %></span></p>
+                            </div>
+                            <div class="grid-descriere-poza">
+                                <p><span class="val-descriere"><%- produs.descriere %></span></p>
+                                <label class="selecteaza-cos">Selectează: <input name="articol_chck" value="articol_<%- produs.id %>" type="checkbox"></label>
+                                <label class="mentine">
+                                    <input type="checkbox" class="hidden-checkbox chck-mentine">
+                                    <button class="btn btn-dark mentine-btn" value="articol_<%- produs.id %>">
+                                        <i class="fa-solid fa-crosshairs"></i>
+                                    </button>
+                                </label>
+                                <label class="sterge">
+                                    <button class="btn btn-dark sterge-btn" value="articol_<%- produs.id %>">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </label>
+                                <label class="sterge-definitiv">
+                                    <button class="btn btn-dark sterge-definitiv-btn" value="articol_<%- produs.id %>">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </label>
+                                <figure>
+                                    <img src="/resurse/img/produse/<%- produs.imagine %>" style="width:80%; height:auto;" alt="<%- produs.nume %>" />
+                                </figure>
+                            </div>
+                            
+                            <ul class="info-prod">
+                                <li><p class="locuri">Locuri: <span class="val-locuri"><%- produs.nr_locuri %></span></p>
+                                    <p class="ore">Total ore: <span class="val-ore"><%- produs.total_ore %></span></p></li>
+                                <li><p class="localitate">Locație: <span class="val-localitate"><%- produs.localitate %></span></p></li>
+                                <li><p class="abilitati">Abilități: <span class="val-abilitati"><%- String(produs.abilitati).split(",").join(", ") %></span></p></li>
+                                <li><p class="data-inceput">Dată început: <span class="val-data-inceput"><time datetime="<%- produs.data_inceput %>"><%- vctZile[produs.data_inceput.getDay()] %>, <%- produs.data_inceput.getDate() %>-<%- vctLuni[produs.data_inceput.getMonth()] %>-<%- produs.data_inceput.getFullYear() %></time></span></p></li>
+                                <li><p class="data-sfarsit">Dată sfârșit: <span class="val-data-sfarsit"><time datetime="<%- produs.data_sfarsit %>"><%- vctZile[produs.data_sfarsit.getDay()] %>, <%- produs.data_sfarsit.getDate() %>-<%- vctLuni[produs.data_sfarsit.getMonth()] %>-<%- produs.data_sfarsit.getFullYear() %></time></span></p></li>
+                                <li><p class="status">Acceptă înscrieri: <span class="val-status"><%= produs.accepta_voluntari ? "DA" : "NU"; %></span></p></li>
+                            </ul>
+                        </article>
+                    <% } %>
+            </section>
+            <div id="modal-produs" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3 id="modal-nume"></h3>
+                    <p><strong>Categorie:</strong> <span id="modal-categorie"></span></p>
+                    <p><strong>Subcategorie:</strong> <span id="modal-subcategorie"></span></p>
+                    <p><strong>Descriere:</strong> <span id="modal-descriere"></span></p>
+                    <p><strong>Număr locuri:</strong> <span id="modal-nr_locuri"></span></p>
+                    <p><strong>Număr ore:</strong> <span id="modal-total_ore"></span></p>
+                    <p><strong>Ore/zi:</strong> <span id="modal-ore_pe_zi"></span></p>
+                    <p><strong>Locație:</strong> <span id="modal-localitate"></span></p>
+                    <p><strong>Abilități:</strong> <span id="modal-abilitati"></span></p>
+                    <p><strong>Dată început:</strong> <span id="modal-data_inceput"></span></p>
+                    <p><strong>Dată sfârșit:</strong> <span id="modal-data_sfarsit"></span></p>
+                    <p><strong>Acceptă înscrieri:</strong> <span id="modal-accepta"></span></p>
+                    <figure><img id="modal-imagine" alt=""></figure>
+                </div>
+            </div>
+        </main>
+        <%- include("../fragmente/footer.ejs") %>
+    </body>
+</html>
